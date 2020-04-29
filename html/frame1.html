@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frame</title>
+  <script type="text/javascript" src="../js/frame1.js"></script>
+</head>
+<body>
+Test frame
+<button onclick="onCreateError()">Create Error</button>
+<button onclick="onLog()">Log</button>
+
+<script type="text/javascript">
+  function onCreateError() {
+    throw new Error("Hey, I am coming from an iframe");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Images</title>
+</head>
+<body>
+
+<div id="totalTime"></div>
+<div id="content"></div>
+
+<script type="text/javascript">
+var now = Date.now();
+var content = document.getElementById("content");
+
+/*for (var i=0; i<300; i++) {
+  var image = document.createElement("img");
+  image.src = "./image.png?v=" + (i+1);
+  content.appendChild(image);
+}*/
+
+for (var i=0; i<300; i++) {
+  var style = document.createElement("link");
+  style.rel = "stylesheet";
+  style.href = "./css/styles.css?v=" + (i+1);
+  document.head.appendChild(style);
+}
+
+window.addEventListener("load", event => {
+  var totalTime = (Date.now() - now);
+
+  document.getElementById("totalTime").innerHTML = totalTime;
+  console.log("loaded! " + totalTime);
+});
+
+</script>
+</body>
+</html>
+

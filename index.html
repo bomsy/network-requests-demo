@@ -1,0 +1,363 @@
+<?php
+  ob_start("ob_gzhandler");
+
+  setcookie("TestCookie", "a value");
+  setcookie("TestCookie23", "ValueCookie23", time() + 86400, "/", "", false, true);
+  setcookie("TestCookie34", "ValueCookie34", time() + 86400, "/", "", false, false);
+  setcookie("TestCookie35", "ValueCookie35", time() + 86400, "/", "", false, false);
+  setcookie("Mouse", "value", time() + 86400, "/", "", false, false);
+  setcookie("TestCookie222", "MOuSE", time() + 86400, "/", "", false, false);
+  setcookie("TestCookie111", "mouse", time() + 86400, "/", "", false, false);
+  setcookie("MyCustomCookie", "Workers eat cookies", time() + 86400, "/", "", false, false);
+
+  header('my-location: //www.youtubeinmp3.com/download/?video=https://www.youtube.com/watch?v=8vkfsCIfDFc');
+  header('X-Test: value2', false);
+  header('X-Test: value1', false);
+  header('X-SearchTest: value1', false);
+  header('X-SearchTest2: mouse', false);
+  header('X-SearchTest2: Mouse', false);
+  header('X-SearchTestMouse: test', false);
+  header('X-Test: ', false);
+  header('X-Test: value3', false);
+  header('X-Url: http://myurl.example.com');
+  header('X-LongUrl: http://myurl.example.com/haojahojehaojahojehaojahojehaojahoje/kjaksdfkjaksdfkjaksdfkjaksdf/index.html');
+  header('X-LongUrl2: www.youtubeinmp3.com/download/?video=https://www.youtube.com/watch?v=8vkfsCIfDFc');
+  header('My-Custom-Header: All workers are running', false);
+  //header('Server-Timing: db;dur=123, tmpl;dur=56', false);
+  header('Server-Timing: metric1;dur=123.4;desc=time1', false);
+
+  setcookie("TestCookie34", "ValueCookie3thisisverylongtext2", time() + 86400, "/", "", false, false);
+  setcookie("TestCookie36", "ValueCookie36", time() + 86400, "/", "", false, false);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>XHR Spy Test Page</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" href="./icons/test.ico">
+  <link rel="stylesheet" charset="utf-8" type="text/css" media="screen" href="missing-stylesheet.css"/>
+  <script
+        src="https://code.jquery.com/jquery8--3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+  <script src="js/images.js"></script>
+  <script src="js/tests.js"></script>
+  <script src="js/get.js"></script>
+  <script src="js/url.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/async.js"></script>
+  <script src="js/async-stacktrace.js"></script>
+  <script src="js/debugging.js"></script>
+  <script src="js/json.js"></script>
+  <script src="js/post.js"></script>
+  <script src="js/headers.js"></script>
+  <script src="js/xml.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="js/event-listeners.js"></script>
+  <script src="js/testing.js"></script>
+  <script src="js/jquery-test.js"></script>
+  <script src="js/async-stepping.js"></script>
+  <script src="js/ditm.js"></script>
+  <script src="js/minified.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/plain-text.js"></script>
+  <script src="js/blocking.js"></script>
+  <script src="js/redirect.js"></script>
+  <script src="js/workers.js"></script>
+  <script src="js/errors.js"></script>
+  <script src="js/gced.js"></script>
+  <script src="js/test.js"></script>
+  <script src="js/pretty-print.js"></script>
+  <script src="js/pretty-print2.js"></script>
+  <script src="js/php.js"></script>
+  <script src="js/dom-mutations.js"></script>
+  <script src="js/browser-cache.js"></script>
+  <script src="js/chunked-response.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/watchpoints.js"></script>
+
+  <script type="text/javascript">
+    setTimeout(() => {
+      console.log("simple timeout");
+    }, 1000);
+
+    console.log("inline script");
+  </script>
+
+</head>
+<body id="body" data-attr="my-data" class="test a b   ">
+  <h1>HTTP Test Page</h1>
+
+  <div id="results"></div>
+
+  <!-- MOUSE mouse Mouse -->
+
+  <span class="title">Testing:</span>
+  <button id="testing" onclick="onTest(event)">Test</button>
+  <button id="jquery-test">jQuery</button>
+  <button onclick="createListener()">Create Listener</button>
+  <br/>
+
+  <span class="title">Watchpoints:</span>
+  <button id="testing" onclick="onTest(event)">Test</button>
+  <button id="jquery-test">jQuery</button>
+  <button onclick="createListener()">Create Listener</button>
+  <br/>
+
+  <span class="title">Images:</span>
+  <button onclick="onSmallImage()" onmousemove="onSmallImageButonHover()">Get small image over XHR</button>
+  <button onclick="onGetBiggerImage()">Get bigger image over XHR</button>
+  <button onclick="onGetNonExistingImage()">Non Existing Image</button>
+  <span></span>Non existing image: <img src="non-existing-image" /></span>
+  <br/>
+
+  <span class="title">POST requests:</span>
+  <button onclick="onPostJson1()">Post JSON</button>
+  <button onclick="onPostNormalJson()">Post Normal JSON</button>
+  <button onclick="onPostJsonWithArray()">Post JSON With Array</button>
+  <button onclick="onPostXml()">Post XML</button>
+  <button onclick="onPostBigData()">Post Big Data</button>
+  <button onclick="onPostData()">Post Data</button>
+  <button onclick="onPostFormData()">Post Form Data</button>
+  <button onclick="onGetNoPostData()">Get No POST Data</button>
+  <button onclick="onPatchRequest()">PATCH request</button>
+  <button onclick="postJSONEmptyArray()">POST JSON empty array</button>
+  <button onclick="postAndOpenInNewTab()">POST and open in new tab</button>
+  <br/>
+
+  <span class="title">JSON:</span>
+  <button onclick="onGetJsonNumber()">Get JSON Number</button>
+  <button onclick="onTinyResponse()">Get tiny JSON</button>
+  <button onclick="onNormalJson()">Get normal JSON</button>
+  <button onclick="onSmallJson()">Get small JSON</button>
+  <button onclick="onLongResponse()">Get long JSON</button>
+  <button onclick="onBiggerJson()">Get bigger JSON</button>
+  <button onclick="onBigJson()">Get big JSON</button>
+  <button onclick="on8BigJSONRequests()">Get big JSON 8x</button>
+  <button onclick="onGetJson500Times()">Get 500 JSONs</button>
+  <button onclick="onGetJson100Times()">Get 100 JSONs</button>
+  <button onclick="onJSONPRequest()">Get JSONP</button>
+  <button onclick="onJSONString()">JSON string</button>
+  <button onclick="onEmptyJSON()">Empty JSON</button>
+  <br/>
+
+  <span class="title">Headers:</span>
+  <button onclick="onLongHeader()">Get long header</button>
+  <button onclick="onUploadHeaders()">Upload Headers</button>
+  <br/>
+
+  <span class="title">XML:</span>
+  <button onclick="onGetXml()">Get XML</button>
+  <br/>
+
+  <span class="title">Plain Text:</span>
+  <button onclick="onGetSmallPlainText()">Get Small Plain Text</button>
+  <button onclick="onGetBigPlainText()">Get Big Plain Text</button>
+  <button onclick="onGetBigPlainTextNoWhitespace()">Get Big Plain Text (no whitespace)</button>
+  <br/>
+
+  <span class="title">URL:</span>
+  <button onclick="onXhrWithUrlParams()">URL Params</button>
+  <button onclick="onPostJsonWithUrlParams()">Post JSON (+ url params)</button>
+  <button onclick="onLongUrl()">Long URL</button>
+  <button onclick="onAnchorUrl()">URL with Anchor</button>
+  <button onclick="onUrlWithRQL()">URL with RQL</button>
+  <button onclick="getLinkifiedElementsTest()">getLinkifiedElements</button>
+  <br/>
+
+  <span class="title">Encoding:</span>
+  <button onclick="onEncodedData()">Encoded Data</button>
+  <br/>
+
+  <span class="title">Cookies:</span>
+  <button onclick="onGetCookies()">Get Cookies</button>
+  <br/>
+
+  <span class="title">Debugging:</span>
+  <button onclick="on404()">404</button>
+  <button onclick="onInvalidRequest()">Invalid request</button>
+  <button onclick="onError()">Error</button>
+  <button onclick="onException()">Exception</button>
+  <button onclick="onLogEvent(event)">Log Event</button>
+  <button onclick="onBreak(event)">Break</button>
+  <button onclick="doStepOut(event)">Async Step Out</button>
+  <button onclick="onReturnObject()">Return Object</button>
+  <br/>
+
+  <span class="title">Get:</span>
+  <button onclick="onGetSimpleData()">Get Simple Data</button>
+  <button onclick="onFixedResponse()">Fixed Response</button>
+  <button onclick="onBeaconRequest()">Beacon Request</button>
+  <button onclick="getTeapot()">Teapot</button>
+  <button onclick="onPreciseRequest()">2048KB request</button>
+  <button onclick="onRawResponse()">Raw Response</button>
+  <br/>
+
+  <span class="title">Security:</span>
+  <button onclick="onCors1()">Simple CORS</button>
+  <button onclick="onTriggerGetPreflight()">Simple GET Preflight</button>
+  <button onclick="onCwpCors()">CWP CORS</button>
+  <button onclick="onCrossOriginRequest()">Cross Origin Request</button>
+  <button onclick="getWord()">Get Word</button>
+  <button onclick="getWord2()">Get Word From UJC</button>
+  <div id="response"></div>
+  <br/>
+
+  <span class="title">Callstack:</span>
+  <button onclick="waitForData()">Callstacks</button>
+  <br/>
+
+  <span class="title">Async: </span>
+  <button onclick="onWaiting()">Wait for response</button>
+  <button onclick="onBlocking()">Blocking time</button>
+  <button onclick="onErrorStackTrace1()">Error Stacktrace 1</button>
+  <button onclick="onErrorStackTrace2()">Error Stacktrace 2</button>
+  <button onclick="onNetworkStackTrace()">HTTP Request Stacktrace</button>
+  <br/>
+
+  <span class="title">Event Listener:</span>
+    <button onclick="onAddDocumentClickListener()">Add Document Click Handler</button>
+    <button onclick="onAddButtonClickListener(event)">Add Button Click Handler</button>
+    <div id="hoverMeParent">
+      <div onmouseenter="onMouseEnter(event)" onmouseleave="onMouseLeave(event)" id="hoverMe">Hover Me!</div>
+    </div>
+  <br/>
+
+  <span class="title">jQuery:</span>
+  <button id="jquery-test1">jQuery Button #1</button>
+  <button id="jquery-test2">jQuery Button #2</button>
+  <button onclick="createListener()">Create Listener for #2</button>
+  <br/>
+
+  <span class="title">Async Step-out:</span>
+  <button onclick="onCase1()">Case #1</button>
+  <button onclick="onCase2()">Case #2</button>
+  <button onclick="onCase3()">Case #3</button>
+  <br/>
+
+  <span class="title">Async Step-over:</span>
+  <button onclick="onCaseOver1()">Case #1</button>
+  <br/>
+
+  <span class="title">Step-in:</span>
+  <button onclick="onStepIn1()">Case #1</button>
+  <br/>
+
+  <span class="title">Minified Breakpoints</span>
+  <button onclick="onMinified1()">Case #1</button>
+  <br/>
+
+  <span class="title">Console</span>
+  <button onclick="onGroup1()">Grouping Case #1</button>
+  <button onclick="onCssError()">CSS Error</button>
+  <br/>
+
+  <span class="title">Blocked Resources</span>
+  <button onclick="onAbortXHR()">Aborted XHR</button>
+  <button onclick="onWaitForResponse()">Wait for 10 sec</button>
+  <button onclick="onAbortXHR2()">Abort XHR Immediately</button>
+  <br/>
+
+  <span class="title">Redirect</span>
+  <button onclick="onRedirect()">Redirect</button>
+  <button onclick="onTemporaryRedirect()">Temporary Redirect 307</button>
+  <br/>
+
+  <span class="title">Workers:</span>
+  <button onclick="onStartWorker1()">Start Worker1</button>
+  <button onclick="onStartWorker2()">Start Worker2 (quick)</button>
+  <button onclick="onStartWorkerXhr()">Start Worker XHR</button>
+  <button onclick="onStartMyWorker()">Start My Worker</button>
+  <br/>
+
+  <span class="title">Broken Requests:</span>
+  <button onclick="onUnreachableHost()">Start Worker1</button>
+  <br/>
+
+  <span class="title">Chunked Response:</span>
+  <button onclick="onChunkedResponse()">Chunked Response</button>
+  <br/>
+
+  <span class="title">PHP:</span>
+  <button onclick="onGetUploadDir()">Get Upload Dir</button>
+  <br/><br/>
+
+  <span class="title">Search:</span>
+  <button onclick="onSearchMe()">Test request for search</button>
+  <br/><br/>
+
+  <span class="title">Browser Cache:</span>
+  <button onclick="onGetCachedResource()">Get Cached Resource 304</button>
+  <br/><br/>
+
+  <br/>
+  <span class="title">Links:</span>
+  <a href="./html/slow-loading-js.html">Open page with delayed onLoad event</a>
+  <br/><br/>
+
+  <span class="title">Forms:</span>
+  <table border="1" cellpadding="10">
+    <tbody>
+      <tr>
+        <td>
+          <form id="topForm" action="." method="post">
+            <input type="hidden" id="entType" name="entType" value="  11  00  ">
+            <input type="hidden" id="regOrg" name="regOrg" value="441624">
+            <input type="submit" value="Submit">
+          </form>
+        </td>
+        <td>
+          <form action="index.html?a=this&?c=is&b=json&d=in&e=post&q=post&x=post&t=post&u=post&i=post&p=post&m=post&j=post&k=post&m=post&n=post&o=post" method="post" enctype="multipart/form-data">
+            First Name: <input type="text" name="fname"><br>
+            Last Name: <input type="text" name="last-name  "><br>
+            File: <input type="file" name="data"><br>
+            <input type="submit" value="Submit">
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br/>
+
+  <span class="title">Frames:</span>
+  <br/>
+  <iframe src="./html/frame1.html" width="250" height="40"></iframe>
+  <br/>
+  <iframe src="http://janodvarko.cz/test/websockets/" width="550" height="200"></iframe>
+
+  <script type="text/javascript">
+    onDitm();
+  </script>
+
+  <br/><br/>
+
+  <span class="title">Tests:</span>
+  <button onclick="onFetchData()">Simple XHR</button>
+  <button onclick="test(1, 2)">Simple Function call</button>
+  <button onclick="myTest()">A Test Call</button>
+  <br/><br/>
+
+  <input type="text" id="myinput" onchange="onChangeInput()">
+  <br/><br/>
+
+  <span class="title">DOM Mutations:</span>
+  <button onclick="onAppendChild()">Append Child</button>
+  <button onclick="onRemoveChild()">Remove Child</button>
+  <button onclick="onAppendAttr()">Append Attribute</button>
+  <button onclick="onRemoveAttr()">Remove Attribute</button>
+  <br/>
+
+  <ul id="myList">
+    <li>Item 1</li>
+  </ul>
+
+  <br/><br/>
+
+  <!-- <iframe src="http://janodvarko.cz/xhr-spy/html/another-domain.html" width="70" height="40"></iframe> -->
+
+  <img src="./images/image.png" />
+
+</body>
+</html>

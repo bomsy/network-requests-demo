@@ -1,0 +1,22 @@
+[
+  {
+    "emptyarray": [
+       "this is my string",
+       "this is my data",
+       "this is my test",
+    ],
+    "emptyobject": {
+      "data": "my data",
+      "test": "my test",
+      "search": "my search",
+    },
+    "commit": {
+      "author": {
+        "name": "Jan Odvarko",
+        "email": "odvarko@gmail.com",
+        "date": "2016-03-21T15:58:13Z"
+      },
+    },
+    "url": "https://test.search.com"
+  }
+]

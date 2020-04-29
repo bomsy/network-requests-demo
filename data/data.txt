@@ -1,0 +1,1 @@
+'Some data fetched from the server'

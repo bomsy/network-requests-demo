@@ -1,0 +1,46 @@
+/* See license.txt for terms of usage */
+
+span.title {
+  font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  line-height: 25px;
+  font-weight: bold;
+  color: green;
+  font-size: 18px;
+}
+
+.backImage {
+  width: 115px;
+  height: 86px;
+  background-image: url('../images/small-image.png');
+}
+
+button:nth-child(1) {
+  color: red;
+}
+
+a {
+  color: green;
+}
+
+/* CSS Warnings */
+.mm_059 .cell {
+  border: 1px solid.mm_059 .cover;
+  width: pink;
+  display: -ms-flexbox;
+}
+
+button {
+  color: xxx;
+}
+
+.testing {
+  color: xxx;
+}
+
+#hoverMe {
+  border: 1px solid green;
+  width: 100px;
+  display: inline-block;
+  padding: 2px;
+  font-size: 12px;
+}

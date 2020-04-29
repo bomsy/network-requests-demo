@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slow Loading Page</title>
+</head>
+<body>
+<h1>Check out the onLoad event</h1>
+
+<button onclick="executeXhr()">Load XHR</button>
+
+<br/><br/>
+
+<script type="text/javascript">
+function executeXhr() {
+  var data = new Array(10).fill("data: hello world!").join();
+  var request = new XMLHttpRequest();
+  request.open("POST", "../php/wait.php", true);
+  request.send(data);
+}
+</script>
+
+<script type="text/javascript" src="../php/slow-loading-js.php"></script>
+
+<iframe src="slow-loading-frame.html" width="200" height="200"></iframe>
+
+<img src="../php/image.php.php?time=2&a=1" width="100" />
+<img src="../php/image.php.php?time=3&a=2" width="100" />
+<img src="../php/image.php.php?time=4&a=3" width="100" />
+<img src="../php/image.php.php?time=5&a=4" width="100" />
+<img src="../php/image.php.php?time=2&a=5" width="100" />
+<img src="../php/image.php.php?time=3&a=6" width="100" />
+<img src="../php/image.php.php?time=4&a=7" width="100" />
+<img src="../php/image.php.php?time=5&a=8" width="100" />
+<img src="../php/image.php.php?time=2&a=9" width="100" />
+<img src="../php/image.php.php?time=3&a=10" width="100" />
+<img src="../php/image.php.php?time=4&a=11" width="100" />
+<img src="../php/image.php.php?time=5&a=12" width="100" />
+<img src="../php/image.php.php?time=2&a=13" width="100" />
+
+</body>
+</html>
